@@ -17,6 +17,9 @@ public class Driver {
         }
 
         Collections.shuffle(initialState);
-        solver.solve(initialState, "DFS");
+
+
+        System.out.println("*************Solving using BFS algorithm*************");
+        solver.solve(initialState, "BFS");
     }
 }

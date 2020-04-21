@@ -1,10 +1,7 @@
 package com.company;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Stack;
+import java.util.*;
 
 public class Search {
 
@@ -44,7 +41,33 @@ public class Search {
 
     public void bfs(State initialState)
     {
+        Queue<State> frontier = new LinkedList<>();
+        HashSet<String> explored = new HashSet<>();
 
+        frontier.add(initialState);
+        while(!frontier.isEmpty()){
+           State state = frontier.remove();
+            explored.add(state.getPuzzleState().toString());
+
+            if(isGoal(state)){
+                System.out.println(state.getPuzzleState());
+                System.out.println("-------------------------GOAL REACHED------------------");
+                return;
+            }
+
+
+
+            System.out.println(state.getPuzzleState());
+
+            System.out.println("-------------------------State-------------------------");
+
+            state.expand();
+            for(State neighbor:state.getNeighbours()){
+                if(!explored.contains(neighbor.getPuzzleState().toString())){
+                    frontier.add(neighbor);
+                }
+            }
+        }
     }
 
     public void aStar(State initialState)
