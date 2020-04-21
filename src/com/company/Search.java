@@ -17,6 +17,7 @@ public class Search {
         stateStack.push(initialState);
 
         HashSet<String> visited = new HashSet<String>();
+        int nodes = 0;
 
         while (!stateStack.isEmpty()) {
 
@@ -36,10 +37,7 @@ public class Search {
                     stateStack.push(neighbour);
                 }
             }
-
         }
-
-
     }
 
     public void bfs(State initialState)

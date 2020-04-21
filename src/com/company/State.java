@@ -85,28 +85,24 @@ public class State {
         /* Left */
         if (this.blankPosition % 3 != 0 && this.blankPosition - 1 >= 0)
         {
-            System.out.println("left");
             this.neighbours.add(moveLeft(this));
         }
 
         /* Up */
         if(this.blankPosition > 2 && this.blankPosition - 3 >= 0)
         {
-            System.out.println("up");
             this.neighbours.add(moveUp(this));
         }
 
         /* Down */
         if(this.blankPosition < 6 && this.blankPosition + 3 <= this.puzzleState.size() - 1)
         {
-            System.out.println("down");
             this.neighbours.add(moveDown(this));
         }
 
         /* Right */
         if(!right.contains(this.blankPosition) && this.blankPosition + 1 <= this.puzzleState.size() - 1)
         {
-            System.out.println("right");
             this.neighbours.add(moveRight(this));
         }
     }
