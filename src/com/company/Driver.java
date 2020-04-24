@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Driver {
     public static void main(String[] args) {
@@ -11,12 +8,16 @@ public class Driver {
         Solver solver = new Solver();
 
         ArrayList<Integer> initialState = new ArrayList<Integer>();
+//        ArrayList<Integer> initialState = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 0, 4, 5, 6, 7, 8));
 
         for(int i = 0; i < 9; i++) {
             initialState.add(i);
         }
 
         Collections.shuffle(initialState);
-        solver.solve(initialState, "DFS");
+
+
+        System.out.println("*************Solving using DFS algorithm*************");
+        solver.solve(initialState, "A*", "manhattan");
     }
 }
