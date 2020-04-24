@@ -8,8 +8,6 @@ public class State {
 
     private ArrayList<Integer> puzzleState;
 
-//    private ArrayList<State> neighbours = new ArrayList<>();
-
     private int blankPosition;
 
     private int cost;
@@ -37,8 +35,7 @@ public class State {
     /* f(n) = g(n) + h(n) */
     public int getPathCost() { return this.cost + this.heuristicCost; }
 
-    public void setHeuristicCost(int cost) { this.heuristicCost = cost; }
-
+    /* computing h(n) */
     public void computeCost(String heuristic)
     {
         int cost = 0;
