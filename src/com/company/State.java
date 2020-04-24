@@ -82,15 +82,9 @@ public class State {
         int newBlankPosition = currentState.blankPosition + 1;
 
         ArrayList<Integer> puzzleState = new ArrayList<>(currentState.getPuzzleState());
-<<<<<<< HEAD
 
         Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
 
-=======
-
-        Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
-
->>>>>>> 0b6bd3ad8c8bdadac2da24841fd2e59d6c6ceae6
         State state = new State(puzzleState, newBlankPosition, currentState.cost + 1);
 
         return state;
@@ -103,15 +97,9 @@ public class State {
         int newBlankPosition = currentState.blankPosition + 3;
 
         ArrayList<Integer> puzzleState = new ArrayList<>(currentState.getPuzzleState());
-<<<<<<< HEAD
 
         Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
 
-=======
-
-        Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
-
->>>>>>> 0b6bd3ad8c8bdadac2da24841fd2e59d6c6ceae6
         State state = new State(puzzleState, newBlankPosition, currentState.cost + 1);
 
         return state;
@@ -140,41 +128,25 @@ public class State {
         /* Left */
         if (this.blankPosition % 3 != 0 && this.blankPosition - 1 >= 0)
         {
-<<<<<<< HEAD
             neighbours.add(moveLeft(this));
-=======
-            this.neighbours.add(moveLeft(this));
->>>>>>> 0b6bd3ad8c8bdadac2da24841fd2e59d6c6ceae6
         }
 
         /* Up */
         if(this.blankPosition > 2 && this.blankPosition - 3 >= 0)
         {
-<<<<<<< HEAD
             neighbours.add(moveUp(this));
-=======
-            this.neighbours.add(moveUp(this));
->>>>>>> 0b6bd3ad8c8bdadac2da24841fd2e59d6c6ceae6
         }
 
         /* Down */
         if(this.blankPosition < 6 && this.blankPosition + 3 <= this.puzzleState.size() - 1)
         {
-<<<<<<< HEAD
             neighbours.add(moveDown(this));
-=======
-            this.neighbours.add(moveDown(this));
->>>>>>> 0b6bd3ad8c8bdadac2da24841fd2e59d6c6ceae6
         }
 
         /* Right */
         if(!right.contains(this.blankPosition) && this.blankPosition + 1 <= this.puzzleState.size() - 1)
         {
-<<<<<<< HEAD
             neighbours.add(moveRight(this));
-=======
-            this.neighbours.add(moveRight(this));
->>>>>>> 0b6bd3ad8c8bdadac2da24841fd2e59d6c6ceae6
         }
 
         return neighbours;
