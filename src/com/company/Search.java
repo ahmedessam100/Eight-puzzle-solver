@@ -49,6 +49,8 @@ public class Search {
            State state = frontier.remove();
             explored.add(state.getPuzzleState().toString());
 
+            new Figure(9, state.getPuzzleState());
+
             if(isGoal(state)){
                 System.out.println(state.getPuzzleState());
                 System.out.println("-------------------------GOAL REACHED------------------");

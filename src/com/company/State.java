@@ -33,9 +33,11 @@ public class State {
         /* Moving the blank to the left */
         int newBlankPosition = currentState.blankPosition - 1;
 
-        State state = new State(currentState.puzzleState, newBlankPosition);
+        ArrayList<Integer> puzzleState = new ArrayList<>(currentState.getPuzzleState());
 
-        Collections.swap(state.puzzleState, newBlankPosition, currentState.blankPosition);
+        Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
+
+        State state = new State(puzzleState, newBlankPosition);
 
         return state;
     }
@@ -46,9 +48,11 @@ public class State {
         /* Moving the blank to the left */
         int newBlankPosition = currentState.blankPosition + 1;
 
-        State state = new State(currentState.puzzleState, newBlankPosition);
+        ArrayList<Integer> puzzleState = new ArrayList<>(currentState.getPuzzleState());
 
-        Collections.swap(state.puzzleState, newBlankPosition, currentState.blankPosition);
+        Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
+
+        State state = new State(puzzleState, newBlankPosition);
 
         return state;
     }
@@ -59,9 +63,11 @@ public class State {
         /* Moving the blank to the left */
         int newBlankPosition = currentState.blankPosition + 3;
 
-        State state = new State(currentState.puzzleState, newBlankPosition);
+        ArrayList<Integer> puzzleState = new ArrayList<>(currentState.getPuzzleState());
 
-        Collections.swap(state.puzzleState, newBlankPosition, currentState.blankPosition);
+        Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
+
+        State state = new State(puzzleState, newBlankPosition);
 
         return state;
     }
@@ -72,9 +78,11 @@ public class State {
         /* Moving the blank to the left */
         int newBlankPosition = currentState.blankPosition - 3;
 
-        State state = new State(currentState.puzzleState, newBlankPosition);
+        ArrayList<Integer> puzzleState = new ArrayList<>(currentState.getPuzzleState());
 
-        Collections.swap(state.puzzleState, newBlankPosition, currentState.blankPosition);
+        Collections.swap(puzzleState, newBlankPosition, currentState.blankPosition);
+
+        State state = new State(puzzleState, newBlankPosition);
 
         return state;
     }
