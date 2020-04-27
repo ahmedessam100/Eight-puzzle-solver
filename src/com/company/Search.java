@@ -1,6 +1,5 @@
 package com.company;
 
-import javax.swing.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -36,8 +35,8 @@ public class Search {
                 return;
             }
 
-            TimeUnit.MILLISECONDS.sleep(50);
-            f.f.dispose();
+            TimeUnit.MILLISECONDS.sleep(200);
+            f.getF().dispose();
 
             currState.expand().forEach((neighbour) -> {
                 if (!visited.contains(neighbour.getPuzzleState().toString())){
@@ -68,20 +67,19 @@ public class Search {
                 return;
             }
 
-            TimeUnit.MILLISECONDS.sleep(50);
-            f.f.dispose();
+            TimeUnit.MILLISECONDS.sleep(200);
+            f.getF().dispose();
 
 
             System.out.println(state.getPuzzleState());
             System.out.println("-------------------------State-------------------------");
 
             state.expand().forEach((neighbour) -> {
-
                 if(!explored.contains(neighbour.getPuzzleState().toString())){
                     frontier.add(neighbour);
                 }
-
             });
+
         }
     }
 
@@ -107,7 +105,8 @@ public class Search {
             System.out.println(currState.getPuzzleState());
             visited.add(currState.getPuzzleState().toString());
 
-            f =new Figure(9, currState.getPuzzleState());
+
+            f = new Figure(9, currState.getPuzzleState());
 
             if (isGoal(currState))
             {
@@ -116,10 +115,8 @@ public class Search {
                 return;
             }
 
-            TimeUnit.MILLISECONDS.sleep(50);
-            f.f.dispose();
-
-            currState.expand();
+            TimeUnit.MILLISECONDS.sleep(200);
+            f.getF().dispose();
 
             State finalCurrState = currState;
             AtomicReference<State> state1 = new AtomicReference<>();
