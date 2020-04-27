@@ -9,14 +9,13 @@ public class Search {
 
     private ArrayList<Integer> goalState = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
 
-    public void dfs(State initialState)
-    {
+    public void dfs(State initialState) throws InterruptedException {
         State currState;
 
         Deque<State> stateStack = new ArrayDeque<State>();
         stateStack.push(initialState);
 
-
+        Figure f;
         HashSet<String> visited = new HashSet<String>();
         int nodes = 0;
 
@@ -29,15 +28,16 @@ public class Search {
             visited.add(currState.getPuzzleState().toString());
 
 
-            Figure f =new Figure(9, currState.getPuzzleState());
-            f.f.setVisible(true);
-            f.f.dispose();
+            f =new Figure(9, currState.getPuzzleState());
 
             if (isGoal(currState)) {
                 System.out.println("Number of Nodes:" + nodes);
                 System.out.println("----------------------------GOAL REACHED---------------------");
                 return;
             }
+
+            TimeUnit.MILLISECONDS.sleep(50);
+            f.f.dispose();
 
             currState.expand().forEach((neighbour) -> {
                 if (!visited.contains(neighbour.getPuzzleState().toString())){
@@ -67,8 +67,8 @@ public class Search {
                 System.out.println("-------------------------GOAL REACHED------------------");
                 return;
             }
-            TimeUnit.MILLISECONDS.sleep(50);
 
+            TimeUnit.MILLISECONDS.sleep(50);
             f.f.dispose();
 
 
@@ -85,8 +85,7 @@ public class Search {
         }
     }
 
-    public void aStar(State initialState, String heuristic)
-    {
+    public void aStar(State initialState, String heuristic) throws InterruptedException {
         State currState;
         PriorityQueue<State> frontier = new PriorityQueue<>(Comparator.comparingInt(State::getPathCost));
         HashSet<String> inHeap = new HashSet<String>();
@@ -96,7 +95,7 @@ public class Search {
         inHeap.add(initialState.getPuzzleState().toString());
 
         HashSet<String> visited = new HashSet<String>();
-
+        Figure f;
         int nodes = 0;
 
         while (!frontier.isEmpty())
@@ -108,7 +107,7 @@ public class Search {
             System.out.println(currState.getPuzzleState());
             visited.add(currState.getPuzzleState().toString());
 
-            new Figure(9, currState.getPuzzleState());
+            f =new Figure(9, currState.getPuzzleState());
 
             if (isGoal(currState))
             {
@@ -116,6 +115,9 @@ public class Search {
                 System.out.println("----------------------------GOAL REACHED----------------------------");
                 return;
             }
+
+            TimeUnit.MILLISECONDS.sleep(50);
+            f.f.dispose();
 
             currState.expand();
 
