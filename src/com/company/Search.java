@@ -11,10 +11,10 @@ public class Search {
     {
         State currState;
 
-        Deque<State> stateStack = new ArrayDeque<State>();
+        Deque<State> stateStack = new ArrayDeque<>();
         stateStack.push(initialState);
 
-        HashSet<String> visited = new HashSet<String>();
+        HashSet<String> visited = new HashSet<>();
         int nodes = 0;
 
         while (!stateStack.isEmpty()) {
@@ -73,13 +73,14 @@ public class Search {
     {
         State currState;
         PriorityQueue<State> frontier = new PriorityQueue<>(Comparator.comparingInt(State::getPathCost));
-        HashSet<String> inHeap = new HashSet<String>();
+        HashSet<String> inHeap = new HashSet<>();
 
         initialState.computeCost(heuristic);
         frontier.add(initialState);
         inHeap.add(initialState.getPuzzleState().toString());
 
-        HashSet<String> visited = new HashSet<String>();
+        HashSet<String> visited = new HashSet<>();
+        Figure f;
 
         int nodes = 0;
 
