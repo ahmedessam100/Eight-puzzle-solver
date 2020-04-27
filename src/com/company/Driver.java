@@ -22,6 +22,6 @@ public class Driver {
     */
 
         System.out.println("*************Solving using DFS algorithm*************");
-        solver.solve(initialState, "bfs", "manhattan");
+        solver.solve(initialState, "BFS", "manhattan");
     }
 }

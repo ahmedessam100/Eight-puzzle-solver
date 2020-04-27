@@ -15,18 +15,33 @@ public class Figure {
 
         for(int i=0; i<size; i++){
 
-            button[i] = new JButton(puzzleState.get(i).toString());
+
 
             if(puzzleState.get(i) == 0){
+                button[i] = new JButton("");
                 button[i].setBackground(Color.RED);
+
+            }
+            else{
+                button[i] = new JButton(puzzleState.get(i).toString());
             }
 
             f.add(button[i]);
         }
 
+
+
+
         f.setLayout(new GridLayout(3, 3));
         f.setSize(300, 300);
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         f.setVisible(true);
+        //f.dispose();
+
+
+
     }
+
+
 }

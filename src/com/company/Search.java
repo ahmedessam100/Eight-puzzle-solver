@@ -1,20 +1,22 @@
 package com.company;
 
+import javax.swing.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Search {
 
     private ArrayList<Integer> goalState = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
 
-    public void dfs(State initialState)
-    {
+    public void dfs(State initialState) throws InterruptedException {
         State currState;
 
-        Deque<State> stateStack = new ArrayDeque<>();
+        Deque<State> stateStack = new ArrayDeque<State>();
         stateStack.push(initialState);
 
-        HashSet<String> visited = new HashSet<>();
+        Figure f;
+        HashSet<String> visited = new HashSet<String>();
         int nodes = 0;
 
         while (!stateStack.isEmpty()) {
@@ -25,11 +27,17 @@ public class Search {
             System.out.println(currState.getPuzzleState());
             visited.add(currState.getPuzzleState().toString());
 
+
+            f =new Figure(9, currState.getPuzzleState());
+
             if (isGoal(currState)) {
                 System.out.println("Number of Nodes:" + nodes);
                 System.out.println("----------------------------GOAL REACHED---------------------");
                 return;
             }
+
+            TimeUnit.MILLISECONDS.sleep(50);
+            f.f.dispose();
 
             currState.expand().forEach((neighbour) -> {
                 if (!visited.contains(neighbour.getPuzzleState().toString())){
@@ -39,25 +47,33 @@ public class Search {
         }
     }
 
-    public void bfs(State initialState)
-    {
+    public void bfs(State initialState) throws InterruptedException {
         Queue<State> frontier = new LinkedList<>();
         HashSet<String> explored = new HashSet<>();
 
         frontier.add(initialState);
+        Figure f;
 
         while(!frontier.isEmpty()){
 
             State state = frontier.remove();
             explored.add(state.getPuzzleState().toString());
-            System.out.println("-------------------------State-------------------------");
-            System.out.println(state.getPuzzleState());
+
+            f =new Figure(9, state.getPuzzleState());
+
 
             if(isGoal(state)){
                 System.out.println(state.getPuzzleState());
                 System.out.println("-------------------------GOAL REACHED------------------");
                 return;
             }
+
+            TimeUnit.MILLISECONDS.sleep(50);
+            f.f.dispose();
+
+
+            System.out.println(state.getPuzzleState());
+            System.out.println("-------------------------State-------------------------");
 
             state.expand().forEach((neighbour) -> {
 
@@ -69,19 +85,17 @@ public class Search {
         }
     }
 
-    public void aStar(State initialState, String heuristic)
-    {
+    public void aStar(State initialState, String heuristic) throws InterruptedException {
         State currState;
         PriorityQueue<State> frontier = new PriorityQueue<>(Comparator.comparingInt(State::getPathCost));
-        HashSet<String> inHeap = new HashSet<>();
+        HashSet<String> inHeap = new HashSet<String>();
 
         initialState.computeCost(heuristic);
         frontier.add(initialState);
         inHeap.add(initialState.getPuzzleState().toString());
 
-        HashSet<String> visited = new HashSet<>();
+        HashSet<String> visited = new HashSet<String>();
         Figure f;
-
         int nodes = 0;
 
         while (!frontier.isEmpty())
@@ -93,12 +107,17 @@ public class Search {
             System.out.println(currState.getPuzzleState());
             visited.add(currState.getPuzzleState().toString());
 
+            f =new Figure(9, currState.getPuzzleState());
+
             if (isGoal(currState))
             {
                 System.out.println("Number of States:" + nodes);
                 System.out.println("----------------------------GOAL REACHED----------------------------");
                 return;
             }
+
+            TimeUnit.MILLISECONDS.sleep(50);
+            f.f.dispose();
 
             currState.expand();
 
