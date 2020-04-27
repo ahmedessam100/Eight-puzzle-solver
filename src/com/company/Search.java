@@ -50,14 +50,17 @@ public class Search {
 
             State state = frontier.remove();
             explored.add(state.getPuzzleState().toString());
-            System.out.println(state.getPuzzleState());
-            System.out.println("-------------------------State-------------------------");
 
             if(isGoal(state)){
                 System.out.println(state.getPuzzleState());
                 System.out.println("-------------------------GOAL REACHED------------------");
                 return;
             }
+
+
+
+            System.out.println(state.getPuzzleState());
+            System.out.println("-------------------------State-------------------------");
 
             state.expand().forEach((neighbour) -> {
 
@@ -98,6 +101,8 @@ public class Search {
                 System.out.println("----------------------------GOAL REACHED----------------------------");
                 return;
             }
+
+            currState.expand();
 
             State finalCurrState = currState;
             AtomicReference<State> state1 = new AtomicReference<>();
