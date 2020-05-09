@@ -8,6 +8,7 @@ public class Driver {
         Solver solver = new Solver();
 
         ArrayList<Integer> initialState = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
         /* Generating initial random state */
         for(int i = 0; i < 9; i++) {
@@ -16,9 +17,16 @@ public class Driver {
 
         Collections.shuffle(initialState);
 
+        System.out.println("Enter the searching approach:");
+        String searchApproach = scanner.nextLine();
 
-        String heuristic = "manhattan";
-        String searchApproach = "A*";
+        String heuristic = "";
+
+        if (searchApproach.equalsIgnoreCase("A*") || searchApproach.equalsIgnoreCase("aStar"))
+        {
+            System.out.println("Enter A* heuristic(manhattan/euclidean):");
+            heuristic = scanner.nextLine();
+        }
 
         System.out.println("*************Solving using " + searchApproach + " algorithm*************");
         solver.solve(initialState, searchApproach, heuristic);
